@@ -15,9 +15,6 @@ public class UpdateAccountRequestDto {
     private String phone;
 
     @NotBlank
-    private String password;
-
-    @NotBlank
     private String fname;
 
     @NotBlank
@@ -25,7 +22,7 @@ public class UpdateAccountRequestDto {
 
     private String avt;
 
-    public AccountEntity toEntity(Integer accountId) {
-        return new AccountEntity(accountId, email, phone, password, fname, lname, 0, avt);
+    public AccountEntity toEntity(AccountEntity prevEntity) {
+        return new AccountEntity(prevEntity.getAccountId(), email, phone, prevEntity.getPassword(), fname, lname, 0, avt);
     }
 }

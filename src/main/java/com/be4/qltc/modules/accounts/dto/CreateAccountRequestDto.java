@@ -4,6 +4,7 @@ import com.be4.qltc.modules.database.entities.AccountEntity;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Data
 public class CreateAccountRequestDto {
@@ -26,6 +27,7 @@ public class CreateAccountRequestDto {
     private String avt;
 
     public AccountEntity toEntity() {
-        return new AccountEntity(email, phone, password, fname, lname, 0, avt);
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        return new AccountEntity(email, phone, encoder.encode(password), fname, lname, 0, avt);
     }
 }

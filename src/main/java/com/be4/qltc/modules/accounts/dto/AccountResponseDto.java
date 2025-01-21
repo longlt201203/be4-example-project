@@ -14,8 +14,6 @@ public class AccountResponseDto {
 
     private String phone;
 
-    private String password;
-
     private String fname;
 
     private String lname;
@@ -28,11 +26,10 @@ public class AccountResponseDto {
 
     private Instant updatedAt;
 
-    public AccountResponseDto(Integer accountId, String email, String phone, String password, String fname, String lname, Integer role, String avt, Instant createdAt, Instant updatedAt) {
+    public AccountResponseDto(Integer accountId, String email, String phone, String fname, String lname, Integer role, String avt, Instant createdAt, Instant updatedAt) {
         this.accountId = accountId;
         this.email = email;
         this.phone = phone;
-        this.password = password;
         this.fname = fname;
         this.lname = lname;
         this.role = role;
@@ -46,7 +43,6 @@ public class AccountResponseDto {
                 entity.getAccountId(),
                 entity.getEmail(),
                 entity.getPhone(),
-                entity.getPassword(),
                 entity.getFname(),
                 entity.getLname(),
                 entity.getRole(),

@@ -32,8 +32,8 @@ public class AccountService {
     }
 
     public AccountEntity updateAccount(Integer accountId, UpdateAccountRequestDto accountRequestDto) {
-        getAccount(accountId);
-        AccountEntity entity = accountRequestDto.toEntity(accountId);
+        AccountEntity prevEntity = getAccount(accountId);
+        AccountEntity entity = accountRequestDto.toEntity(prevEntity);
         return accountRepository.save(entity);
     }
 

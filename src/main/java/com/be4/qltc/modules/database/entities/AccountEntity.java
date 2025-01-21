@@ -20,7 +20,7 @@ public class AccountEntity {
     @Column(length = 12, unique = true, nullable = false)
     private String phone;
 
-    @Column(length = 30, nullable = false)
+    @Column(length = 255, nullable = false)
     private String password;
 
     @Column(length = 30, nullable = false)
