@@ -1,0 +1,21 @@
+version: '3.9'
+services:
+  db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      ACCEPT_EULA: Y
+      MSSQL_SA_PASSWORD: Admin@123
+    ports:
+      - 1433:1433
+    volumes:
+      - qltc_db_vol:/var/opt/mssql
+    networks:
+      - qltc_net
+
+volumes:
+  qltc_db_vol:
+
+networks:
+  qltc_net:
+    name: qltc_net
+    driver: bridge
