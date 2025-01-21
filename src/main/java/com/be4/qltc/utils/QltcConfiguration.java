@@ -1,4 +1,4 @@
-package com.be4.qltc;
+package com.be4.qltc.utils;
 
 import lombok.Data;
 import org.springframework.context.annotation.Configuration;
