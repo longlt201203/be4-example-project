@@ -5,8 +5,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
-import javax.sql.DataSource;
-
 @Configuration
 @Import(QltcSecurityConfiguration.class)
 @Data
@@ -16,4 +14,7 @@ public class QltcConfiguration {
 
     @Value("${qltc.jwt.issuer}")
     private String jwtIssuer;
+
+    @Value("${qltc.google.client_id}")
+    private String googleClientId;
 }

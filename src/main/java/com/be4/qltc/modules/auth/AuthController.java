@@ -2,6 +2,7 @@ package com.be4.qltc.modules.auth;
 
 import com.be4.qltc.modules.accounts.dto.AccountResponseDto;
 import com.be4.qltc.modules.auth.dto.BasicLoginDto;
+import com.be4.qltc.modules.auth.dto.GoogleLoginDto;
 import com.be4.qltc.modules.database.entities.AccountEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,6 +20,12 @@ public class AuthController {
     @PostMapping("/basic")
     private ResponseEntity basicLogin(@RequestBody BasicLoginDto dto) {
         String accessToken = authService.basicLogin(dto);
+        return new ResponseEntity(new HashMap<String, Object>() {{ put("accessToken", accessToken); }}, HttpStatus.CREATED);
+    }
+
+    @PostMapping("/google")
+    private ResponseEntity googleLogin(@RequestBody GoogleLoginDto dto) {
+        String accessToken = authService.googleLogin(dto);
         return new ResponseEntity(new HashMap<String, Object>() {{ put("accessToken", accessToken); }}, HttpStatus.CREATED);
     }
 

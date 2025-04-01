@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login Google</title>
+</head>
+
+<body>
+    <!-- Update the data-client_id -->
+    <div id="g_id_onload" data-client_id="342915674625-egqemuqs7vee5433q5g54akqdu2o0k1r.apps.googleusercontent.com"
+        data-context="signin" data-ux_mode="popup" data-callback="loginGoogle" data-itp_support="true">
+    </div>
+
+    <div class="g_id_signin" data-type="standard" data-shape="rectangular" data-theme="outline" data-text="signin_with"
+        data-size="large" data-logo_alignment="left">
+    </div>
+
+    <pre id="server-response-dislay"></pre>
+
+    <script src="https://accounts.google.com/gsi/client" async></script>
+    <script>
+        const url = "http://localhost:8080/api/auth/google"
+
+        async function loginGoogle(data) {
+            const response = await fetch(url, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    credential: data.credential
+                })
+            })
+            const serverData = await response.json()
+            
+            const pre = document.getElementById("server-response-dislay")
+            const code = document.createElement("code")
+            code.innerHTML = JSON.stringify(serverData, null, 4)
+            pre.innerHTML = ""
+            pre.appendChild(code)
+        }
+    </script>
+</body>
+
+</html>
